@@ -1,14 +1,13 @@
 ---
-layout: none
+layout: null
 ---
 [
   {% for post in site.posts %}
     {
-      "title"    : "{{ post.title | escape }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "category" : "{{ post.categories | join: ', ' }}",
-      "tags"     : "{{ post.tags | join: ', ' }}",
-      "date"     : "{{ post.date | date: '%B %d, %Y' }}"
+      "title": "{{ post.title | escape }}",
+      "url": "{{ site.baseurl }}{{ post.url }}",
+      "date": "{{ post.date | date: '%d %b %Y' }}",
+      "tags": "{{ post.tags | join: ', ' }}"
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

@@ -1,13 +1,12 @@
-title: Ical Bakhri Blog
-email: email@domain.com
-description: >- # Ganti dengan deskripsi blog Anda
-  Blog personal yang membahas teknologi, pemrograman, dan kehidupan.
+title: log.ical
+description: Catatan seputar Linux, Server, Docker, Self-hosting, dan teknologi web dari sudut pandang Ical Bakhri.
+url: "https://log.ical.web.id"
 baseurl: ""
-url: "https://icalbakhri.github.io" 
+author: "Ical Bakhri"
 twitter:
-  username: icalbakhri # Ganti jika ada
+  username: "icalbakhri"
 
-# Build settings
+timezone: "Asia/Jakarta"
+
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag # Plugin SEO otomatis
+  - jekyll-seo-tag

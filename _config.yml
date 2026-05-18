@@ -1,0 +1,13 @@
+title: Log.ical
+email: icang@duck.com
+description: >- # Ganti dengan deskripsi blog Anda
+  Blog personal yang membahas teknologi, pemrograman, dan kehidupan.
+baseurl: ""
+url: "https://log.ical.web.id" 
+twitter:
+  username: icalbakhri # Ganti jika ada
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag # Plugin SEO otomatis

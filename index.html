@@ -1,19 +1,32 @@
 ---
 layout: default
-title: Home
+title: Beranda
 ---
 
-<div class="home">
-    <h2 class="section-title">Artikel Terbaru</h2>
-    <ul class="post-list">
-        {% for post in site.posts %}
-            <li>
-                <span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span>
-                <h3>
-                    <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                </h3>
-                <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+<div id="search-container">
+  <input type="text" id="search-input" placeholder="Cari artikel...">
+  <ul id="results-container"></ul>
 </div>
+
+<h2>Artikel Terbaru</h2>
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<script>
+  window.onload = function() {
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json',
+      searchResultTemplate: '<li><a href="{url}">{title}</a> - <small>{tags}</small></li>',
+      noResultsText: '<li>Tidak ada artikel yang ditemukan.</li>',
+      limit: 10,
+      fuzzy: false
+    })
+  };
+</script>

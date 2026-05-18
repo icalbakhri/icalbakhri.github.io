@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
-  {% include head.html %}
-  <body>
-    {% include header.html %} <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </main>
+{% include head.html %}
+<body class="bg-zinc-50 text-zinc-900 antialiased selection:bg-zinc-200">
 
-    {% include footer.html %} <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
-  </body>
+    {% include header.html %}
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            
+            <main class="lg:col-span-3 bg-white p-6 sm:p-10 rounded-2xl border border-zinc-200 shadow-sm">
+                {{ content }}
+            </main>
+
+            {% include sidebar.html %}
+            
+        </div>
+    </div>
+
+    {% include footer.html %}
+
+</body>
 </html>

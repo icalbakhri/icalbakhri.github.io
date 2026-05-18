@@ -1,0 +1,59 @@
+<aside class="lg:col-span-1 space-y-10">
+    
+    <div class="bg-zinc-900 text-white p-6 rounded-2xl shadow-sm">
+        <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+            <i data-lucide="terminal-square" class="w-5 h-5 text-zinc-400"></i> {{ site.title | default: "log.ical" }}
+        </h3>
+        <p class="text-sm text-zinc-400 leading-relaxed">
+            {{ site.description | default: "Catatan seputar Linux, Server, Docker, Self-hosting, dan teknologi web." }}
+        </p>
+    </div>
+
+    <div>
+        <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-500 mb-4 border-b border-zinc-200 pb-2">
+            Tulisan Terakhir
+        </h3>
+        <ul class="space-y-4">
+            {% for post in site.posts limit:3 %}
+            <li>
+                <a href="{{ post.url | relative_url }}" class="group block">
+                    <h4 class="text-zinc-900 font-medium leading-snug group-hover:text-blue-600 transition-colors">{{ post.title }}</h4>
+                    <p class="text-xs text-zinc-500 mt-1">{{ post.date | date: "%d %b %Y" }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-500 mb-4 border-b border-zinc-200 pb-2">
+            Media Sosial
+        </h3>
+        <ul class="space-y-3">
+            <li>
+                <a href="https://github.com/icalbakhri" target="_blank" class="flex items-center text-zinc-600 hover:text-zinc-900 transition-colors">
+                    <i data-lucide="github" class="w-5 h-5 mr-3"></i>
+                    <span class="text-sm font-medium">GitHub</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" class="flex items-center text-zinc-600 hover:text-blue-500 transition-colors">
+                    <i data-lucide="linkedin" class="w-5 h-5 mr-3"></i>
+                    <span class="text-sm font-medium">LinkedIn</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" class="flex items-center text-zinc-600 hover:text-blue-400 transition-colors">
+                    <i data-lucide="twitter" class="w-5 h-5 mr-3"></i>
+                    <span class="text-sm font-medium">Twitter / X</span>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:contact@log.ical.web.id" class="flex items-center text-zinc-600 hover:text-zinc-900 transition-colors">
+                    <i data-lucide="mail" class="w-5 h-5 mr-3"></i>
+                    <span class="text-sm font-medium">Email</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>

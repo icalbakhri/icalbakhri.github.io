@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% seo %}
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Styling khusus untuk konten artikel (Tipografi Minimalis) */
+        .article-content h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #18181b; }
+        .article-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #27272a; }
+        .article-content p { margin-bottom: 1.25rem; line-height: 1.75; color: #3f3f46; }
+        .article-content a { color: #2563eb; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .article-content a:hover { border-color: #2563eb; }
+        .article-content pre { background-color: #18181b; color: #f4f4f5; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; font-size: 0.875rem; line-height: 1.5; }
+        .article-content code { font-family: theme('fontFamily.mono'); }
+        .article-content p > code { background-color: #f4f4f5; color: #ef4444; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #3f3f46; }
+        .article-content li { margin-bottom: 0.5rem; }
+    </style>
+</head>

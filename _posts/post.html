@@ -1,22 +1,37 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: "%b %-d, %Y" }}
-      </time>
-    </p>
-    <div class="post-tags">
-      {% for tag in page.tags %}
-        <a href="/tags#{{ tag | slugify }}" class="tag-badge">{{ tag }}</a>
-      {% endfor %}
-    </div>
-  </header>
+<article>
+    <header class="mb-8 pb-8 border-b border-zinc-100">
+        <div class="flex items-center gap-2 text-sm text-zinc-500 mb-4">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
+            <span>•</span>
+            <span class="inline-flex items-center gap-1">
+                <i data-lucide="tag" class="w-3 h-3"></i> 
+                {{ page.tags | join: ", " }}
+            </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 mb-4 leading-tight">
+            {{ page.title }}
+        </h1>
+        {% if page.description %}
+        <p class="text-lg text-zinc-600">
+            {{ page.description }}
+        </p>
+        {% endif %}
+    </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+    <div class="article-content">
+        {{ content }}
+    </div>
+
+    <footer class="mt-10 pt-6 border-t border-zinc-100 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-zinc-200 flex items-center justify-center text-zinc-500 font-bold text-xl">
+            I
+        </div>
+        <div>
+            <p class="font-medium text-zinc-900">Ical Bakhri</p>
+            <p class="text-sm text-zinc-500">System Administrator & DevOps Enthusiast</p>
+        </div>
+    </footer>
 </article>

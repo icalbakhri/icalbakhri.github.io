@@ -1,9 +1,9 @@
-title: Log.ical
-email: icang@duck.com
+title: Ical Bakhri Blog
+email: email@domain.com
 description: >- # Ganti dengan deskripsi blog Anda
   Blog personal yang membahas teknologi, pemrograman, dan kehidupan.
 baseurl: ""
-url: "https://log.ical.web.id" 
+url: "https://icalbakhri.github.io" 
 twitter:
   username: icalbakhri # Ganti jika ada
 

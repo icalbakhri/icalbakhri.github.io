@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Beranda
+title: Home
 ---
 
 <div class="space-y-10">
-    {% for post in site.posts %}
+    {% assign en_posts = site.posts | where: "lang", "en" %}
+    {% for post in en_posts %}
     <article class="{% unless forloop.last %}border-b border-zinc-100 dark:border-zinc-800/50 pb-10{% endunless %}">
         <header class="mb-4">
             <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 mb-3">

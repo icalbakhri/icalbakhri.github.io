@@ -6,6 +6,14 @@
     
     {% seo %}
     
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +22,14 @@
     
     <script>
         tailwind.config = {
+            darkMode: 'class', // Mengaktifkan dark mode berbasis class
             theme: {
                 extend: { fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['ui-monospace', 'monospace'] } }
             }
         }
     </script>
     <style>
+        /* Styling Artikel Terang */
         .article-content h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #18181b; }
         .article-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #27272a; }
         .article-content p { margin-bottom: 1.25rem; line-height: 1.75; color: #3f3f46; }
@@ -27,18 +37,27 @@
         .article-content a:hover { border-color: #2563eb; }
         .article-content pre { background-color: #18181b; color: #f4f4f5; padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; font-size: 0.875rem; line-height: 1.5; }
         .article-content code { font-family: theme('fontFamily.mono'); }
-        .article-content p > code { background-color: #f4f4f5; color: #ef4444; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .article-content p > code, .article-content li > code { background-color: #f4f4f5; color: #ef4444; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; }
         .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #3f3f46; }
         .article-content li { margin-bottom: 0.5rem; }
+
+        /* Styling Artikel Gelap */
+        .dark .article-content h2 { color: #f4f4f5; }
+        .dark .article-content h3 { color: #e4e4e7; }
+        .dark .article-content p, .dark .article-content ul { color: #a1a1aa; }
+        .dark .article-content a { color: #60a5fa; }
+        .dark .article-content a:hover { border-color: #60a5fa; }
+        .dark .article-content pre { background-color: #000000; border: 1px solid #27272a; }
+        .dark .article-content p > code, .dark .article-content li > code { background-color: #27272a; color: #fca5a5; }
     </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 antialiased selection:bg-zinc-200">
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased selection:bg-zinc-200 dark:selection:bg-zinc-800 transition-colors duration-300">
 
     {% include header.html %}
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
-            <main class="lg:col-span-3 bg-white p-6 sm:p-10 rounded-2xl border border-zinc-200 shadow-sm">
+            <main class="lg:col-span-3 bg-white dark:bg-zinc-900/50 p-6 sm:p-10 rounded-2xl border border-zinc-200 dark:border-zinc-800/50 shadow-sm transition-colors duration-300">
                 {{ content }}
             </main>
             <aside class="lg:col-span-1 space-y-10">
@@ -49,6 +68,35 @@
 
     {% include footer.html %}
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+
+        // Logika Toggle Dark Mode
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        // Sesuaikan icon saat halaman dimuat
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Toggle tema dan simpan preferensi
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+title: "log.ical"
+description: "Catatan seputar Linux, Server, Docker, Self-hosting, dan teknologi web dari sudut pandang Ical Bakhri."
+url: "https://log.ical.web.id"
+author: "Ical Bakhri"
+github_username: "icalbakhri"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:title/
+
+# Mengecualikan file yang tidak perlu di-build
+exclude:
+  - README.md
+  - LICENSE

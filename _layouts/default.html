@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        </div>
+    </header>
+
+    <div class="container wrapper">
+        <main class="content">
+            {{ content }}
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <h3>Postingan Terbaru</h3>
+                <ul class="last-posts">
+                    {% for post in site.posts limit:5 %}
+                        <li>
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                            <span class="date">{{ post.date | date: "%b %d, %Y" }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Social Media</h3>
+                <ul class="social-links">
+                    <li><a href="https://github.com/{{ site.social.github }}" target="_blank">GitHub</a></li>
+                    {% if site.social.twitter %}
+                    <li><a href="https://twitter.com/{{ site.social.twitter }}" target="_blank">Twitter</a></li>
+                    {% endif %}
+                    {% if site.social.linkedin %}
+                    <li><a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank">LinkedIn</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Built with Jekyll.</p>
+        </div>
+    </footer>
+</body>
+</html>

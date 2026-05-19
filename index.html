@@ -49,7 +49,7 @@ title: Home
 {% if paginator.total_pages > 1 %}
 <div class="flex justify-between items-center mt-10 pt-8 border-t border-zinc-100 dark:border-zinc-800">
     {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">« Lebih Baru</a>
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">« New Post</a>
     {% else %}
         <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">« New Post</span>
     {% endif %}
@@ -57,7 +57,7 @@ title: Home
     <span class="text-sm text-zinc-500 dark:text-zinc-400">Page {{ paginator.page }} from {{ paginator.total_pages }}</span>
 
     {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">Lebih Lama »</a>
+        <a href="{{ paginator.next_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">Old Post »</a>
     {% else %}
         <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">Old Post »</span>
     {% endif %}

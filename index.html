@@ -39,7 +39,7 @@ title: Home
         
         <div>
             <a href="{{ post.url | relative_url }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline inline-flex items-center gap-1">
-                Baca selengkapnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                Read more <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
     </article>
@@ -51,15 +51,15 @@ title: Home
     {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">« Lebih Baru</a>
     {% else %}
-        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">« Lebih Baru</span>
+        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">« New Post</span>
     {% endif %}
 
-    <span class="text-sm text-zinc-500 dark:text-zinc-400">Halaman {{ paginator.page }} dari {{ paginator.total_pages }}</span>
+    <span class="text-sm text-zinc-500 dark:text-zinc-400">Page {{ paginator.page }} from {{ paginator.total_pages }}</span>
 
     {% if paginator.next_page %}
         <a href="{{ paginator.next_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">Lebih Lama »</a>
     {% else %}
-        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">Lebih Lama »</span>
+        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">Old Post »</span>
     {% endif %}
 </div>
 {% endif %}

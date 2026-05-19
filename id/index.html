@@ -1,12 +1,16 @@
 ---
-layout: default-id
+layout: default
 title: Beranda
+lang: id
 ---
 <div class="space-y-10">
     {% assign id_posts = site.posts | where: "lang", "id" %}
     {% for post in id_posts %}
     <article class="{% unless forloop.last %}border-b border-zinc-100 dark:border-zinc-800/50 pb-10{% endunless %}">
         <header class="mb-4">
+            <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 mb-3">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+            </div>
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-3 leading-tight">
                 <a href="{{ post.url | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     {{ post.title }}
@@ -15,7 +19,7 @@ title: Beranda
             <p class="text-zinc-600 dark:text-zinc-400 mb-4">{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
         </header>
         <div>
-            <a href="{{ post.url | relative_url }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline inline-flex items-center gap-1">
+            <a href="{{ post.url | relative_url }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline inline-flex items-center gap-1">
                 Baca selengkapnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>

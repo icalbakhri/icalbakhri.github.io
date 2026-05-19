@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{% if page.url contains '/id/' or page.lang == 'id' %}id{% else %}en{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,15 +22,14 @@
     
     <script>
         tailwind.config = {
-            darkMode: 'class', // Mengaktifkan dark mode berbasis class
+            darkMode: 'class',
             theme: {
                 extend: { fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['ui-monospace', 'monospace'] } }
             }
         }
     </script>
-
     <style>
-        /* Styling Artikel Terang */
+        /* Tipografi Artikel Terang */
         .article-content h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #18181b; }
         .article-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #27272a; }
         .article-content p { margin-bottom: 1.25rem; line-height: 1.75; color: #3f3f46; }
@@ -42,7 +41,7 @@
         .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #3f3f46; }
         .article-content li { margin-bottom: 0.5rem; }
 
-        /* Styling Artikel Gelap */
+        /* Tipografi Artikel Gelap */
         .dark .article-content h2 { color: #f4f4f5; }
         .dark .article-content h3 { color: #e4e4e7; }
         .dark .article-content p, .dark .article-content ul { color: #a1a1aa; }
@@ -51,9 +50,8 @@
         .dark .article-content pre { background-color: #000000; border: 1px solid #27272a; }
         .dark .article-content p > code, .dark .article-content li > code { background-color: #27272a; color: #fca5a5; }
     </style>
-	<script src="/assets/js/main.js"></script>
 </head>
-<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased selection:bg-zinc-200 dark:selection:bg-zinc-800 transition-colors duration-300">
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased transition-colors duration-300">
 
     {% include header.html %}
 
@@ -69,6 +67,8 @@
     </div>
 
     {% include footer.html %}
-	<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <script>lucide.createIcons();</script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

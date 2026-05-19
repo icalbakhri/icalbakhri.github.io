@@ -1,14 +1,14 @@
 title: log.ical
-description: Catatan seputar Linux, Server, Docker, Self-hosting, dan teknologi web dari sudut pandang Ical Bakhri.
+description_en: "Notes on Linux, Server, Docker, Self-hosting, and web technology from Ical Bakhri's perspective."
+description_id: "Catatan seputar Linux, Server, Docker, Self-hosting, dan teknologi web dari sudut pandang Ical Bakhri."
 url: "https://log.ical.web.id"
 baseurl: ""
 
-# Update bagian author untuk keperluan Gravatar & Media Sosial
 author:
   name: "Ical Bakhri"
-  email: "icang@duck.com" # Email yang terdaftar di Gravatar
+  email: "contact@log.ical.web.id" # Email Gravatar Anda
   github: "icalbakhri"
-  linkedin: "icalbakhri" # Ganti dengan username LinkedIn Anda
+  linkedin: "icalbakhri"
   twitter: "icalbakhri"
 
 timezone: "Asia/Jakarta"

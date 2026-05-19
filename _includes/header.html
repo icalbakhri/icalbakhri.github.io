@@ -1,26 +1,33 @@
+{% assign is_id = false %}
+{% if page.url contains '/id/' or page.lang == 'id' %}{% assign is_id = true %}{% endif %}
+
 <header class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800/50 sticky top-0 z-10 transition-colors duration-300">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white flex items-center gap-2">
-                    <i data-lucide="terminal" class="w-6 h-6 text-zinc-700 dark:text-zinc-300"></i> >{{ site.title }}
+                <a href="{% if is_id %}/id/{% else %}/{% endif %}" class="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white flex items-center gap-2">
+                    <i data-lucide="terminal" class="w-6 h-6 text-zinc-700 dark:text-zinc-300"></i> {{ site.title }}
                 </a>
             </div>
             
             <div class="flex items-center space-x-4 sm:space-x-8">
                 <nav class="hidden sm:flex space-x-8">
-                    <a href="/" class="text-sm font-medium text-zinc-900 dark:text-zinc-100 border-b-2 border-zinc-900 dark:border-zinc-100 px-1 py-5">Home</a>
-                    <a href="/About/" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 border-b-2 border-transparent px-1 py-5 transition-colors">About</a>
+                    <a href="{% if is_id %}/id/{% else %}/{% endif %}" class="text-sm font-medium text-zinc-900 dark:text-zinc-100 border-b-2 border-zinc-900 dark:border-zinc-100 px-1 py-5">
+                        {% if is_id %}Beranda{% else %}Home{% endif %}
+                    </a>
+                    <a href="{% if is_id %}/id/tentang/{% else %}/about/{% endif %}" class="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 border-b-2 border-transparent px-1 py-5 transition-colors">
+                        {% if is_id %}Tentang{% else %}About{% endif %}
+                    </a>
                 </nav>
                 
+                <button id="lang-toggle" class="text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-3 py-2 rounded-lg transition-colors focus:outline-none">
+                    <span id="lang-text">EN</span>
+                </button>
+
                 <button id="theme-toggle" type="button" class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none rounded-lg text-sm p-2 transition-colors">
                     <i id="theme-toggle-dark-icon" data-lucide="moon" class="hidden w-5 h-5"></i>
                     <i id="theme-toggle-light-icon" data-lucide="sun" class="hidden w-5 h-5"></i>
                 </button>
-				
-				<button id="lang-toggle" class="text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 px-3 py-2 rounded-lg transition-colors focus:outline-none">
-					<span id="lang-text">ID</span>
-				</button>
             </div>
         </div>
     </div>

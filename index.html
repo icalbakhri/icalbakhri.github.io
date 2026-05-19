@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Home
+lang: en
 ---
-
 <div class="space-y-10">
     {% assign en_posts = site.posts | where: "lang", "en" %}
     {% for post in en_posts %}
@@ -10,33 +10,14 @@ title: Home
         <header class="mb-4">
             <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 mb-3">
                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
-                
-                {% if post.tags.size > 0 %}
-                <span>•</span>
-                <span class="inline-flex items-center gap-1">
-                    <i data-lucide="tag" class="w-3 h-3"></i> 
-                    {{ post.tags | join: ", " }}
-                </span>
-                {% endif %}
             </div>
-            
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-3 leading-tight">
                 <a href="{{ post.url | relative_url }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     {{ post.title }}
                 </a>
             </h2>
-            
-            {% if post.description %}
-            <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-                {{ post.description }}
-            </p>
-            {% else %}
-            <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-                {{ post.excerpt | strip_html | truncatewords: 30 }}
-            </p>
-            {% endif %}
+            <p class="text-zinc-600 dark:text-zinc-400 mb-4">{{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}</p>
         </header>
-        
         <div>
             <a href="{{ post.url | relative_url }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline inline-flex items-center gap-1">
                 Read more <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -45,21 +26,3 @@ title: Home
     </article>
     {% endfor %}
 </div>
-
-{% if paginator.total_pages > 1 %}
-<div class="flex justify-between items-center mt-10 pt-8 border-t border-zinc-100 dark:border-zinc-800">
-    {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">« New Post</a>
-    {% else %}
-        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">« New Post</span>
-    {% endif %}
-
-    <span class="text-sm text-zinc-500 dark:text-zinc-400">Page {{ paginator.page }} from {{ paginator.total_pages }}</span>
-
-    {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors">Old Post »</a>
-    {% else %}
-        <span class="text-sm font-medium text-zinc-400 dark:text-zinc-600 border border-zinc-200 dark:border-zinc-800/60 px-4 py-2 rounded-lg cursor-not-allowed">Old Post »</span>
-    {% endif %}
-</div>
-{% endif %}

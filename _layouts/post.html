@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{% assign is_id = false %}
+{% if page.url contains '/id/' or page.lang == 'id' %}{% assign is_id = true %}{% endif %}
+
 <article>
     <header class="mb-8 pb-8 border-b border-zinc-100 dark:border-zinc-800/80">
         <div class="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 mb-4">
@@ -33,7 +36,9 @@ layout: default
         </div>
         <div>
             <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ site.author.name }}</p>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400">System Administrator & DevOps Enthusiast</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                {% if is_id %}System Administrator & DevOps Enthusiast{% else %}System Administrator & DevOps Enthusiast{% endif %}
+            </p>
         </div>
     </footer>
 </article>

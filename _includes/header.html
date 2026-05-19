@@ -6,8 +6,12 @@
         <div class="flex justify-between items-center h-16">
             <div class="flex-shrink-0 flex items-center">
                 <a href="{% if is_id %}/id/{% else %}/{% endif %}" class="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white flex items-center gap-2">
-                    <i data-lucide="terminal" class="w-6 h-6 text-zinc-700 dark:text-zinc-300"></i> {{ site.title }}
-                </a>
+					<i data-lucide="terminal" class="w-6 h-6 text-zinc-700 dark:text-zinc-300"></i> 
+					<div class="flex items-center">
+						<span class="typing-effect" data-text="{{ site.title }}"></span>
+						<span class="animate-pulse text-blue-500 font-normal">_</span>
+					</div>
+				</a>
             </div>
             
             <div class="flex items-center space-x-4 sm:space-x-8">

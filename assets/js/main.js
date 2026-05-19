@@ -104,4 +104,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
     }
+
+	/* ==========================================
+       4. TYPING EFFECT UNTUK SITE TITLE
+       ========================================== */
+    const typingElements = document.querySelectorAll('.typing-effect');
+    
+    typingElements.forEach(element => {
+        // Ambil teks dari atribut data-text (yang diisi oleh Jekyll)
+        const textToType = element.getAttribute('data-text');
+        
+        // Pastikan elemen kosong saat pertama kali dimuat
+        element.textContent = ''; 
+        
+        let i = 0;
+        const typingSpeed = 150; // Kecepatan mengetik dalam milidetik (150ms)
+        
+        function typeWriter() {
+            if (i < textToType.length) {
+                element.textContent += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+        
+        // Memulai efek mengetik dengan sedikit jeda (500ms) setelah halaman dimuat
+        // agar terlihat lebih natural
+        setTimeout(typeWriter, 500);
+    });
+
 });

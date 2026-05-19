@@ -1,3 +1,49 @@
+{% assign is_id = false %}
+{% if page.url contains '/id/' or page.lang == 'id' %}{% assign is_id = true %}{% endif %}
+
+<div>
+    <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        {% if is_id %}Cari Artikel{% else %}Search Articles{% endif %}
+    </h3>
+    <input type="text" id="search-input" class="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors" placeholder="{% if is_id %}Ketik kata kunci...{% else %}Type keywords...{% endif %}">
+    <ul id="search-results" class="mt-4 space-y-3"></ul>
+</div>
+
+<div class="bg-zinc-900 dark:bg-black/40 border border-transparent dark:border-zinc-800/50 text-white p-6 rounded-2xl shadow-sm transition-colors duration-300">
+    <div class="flex items-center gap-4 mb-4">
+        {% assign gravatar_hash = site.author.email | downcase | md5 %}
+        <img src="https://www.gravatar.com/avatar/{{ gravatar_hash }}?s=150" alt="{{ site.author.name }}" class="w-12 h-12 rounded-full border-2 border-zinc-700 bg-zinc-800">
+        <h3 class="text-lg font-semibold flex items-center gap-2 text-zinc-100">
+            <i data-lucide="terminal-square" class="w-5 h-5 text-zinc-400"></i> {{ site.title }}
+        </h3>
+    </div>
+    <p class="text-sm text-zinc-400 leading-relaxed">
+        {% if is_id %}{{ site.description_id }}{% else %}{{ site.description_en }}{% endif %}
+    </p>
+</div>
+
+<div>
+    <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        {% if is_id %}Tulisan Terakhir{% else %}Recent Posts{% endif %}
+    </h3>
+    <ul class="space-y-4">
+        {% if is_id %}
+            {% assign filtered_posts = site.posts | where: "lang", "id" %}
+        {% else %}
+            {% assign filtered_posts = site.posts | where: "lang", "en" %}
+        {% endif %}
+        
+        {% for post in filtered_posts limit:3 %}
+        <li>
+            <a href="{{ post.url | relative_url }}" class="group block">
+                <h4 class="text-zinc-900 dark:text-zinc-300 font-medium leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{ post.title }}</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-500 mt-1">{{ post.date | date: "%d %b %Y" }}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
 <div>
     <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
         {% if is_id %}Media Sosial{% else %}Social Media{% endif %}
